@@ -1,51 +1,91 @@
+// Get a random choice for "Computer"
 function getComputerChoice() {
     const choices = ['rock', 'paper', 'scissors'];
     return choices[Math.floor(Math.random() * choices.length)];
 }
+// Capitalize first letter in a String
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+// Single round of Rock Paper Scissors
 function playRound(playerSelection, computerChoice) {
-    let result;
+    let text;
     let isWinner;
+    let isTie = false;
     playerSelection = playerSelection.toLowerCase();
     // Rock
     if (playerSelection === 'rock') {
         if (computerChoice === 'scissors') {
-            result = 'You won! Rock totally beats Scissors';
+            text = 'You won! Rock totally beats Scissors';
             isWinner = true;
         }
         else {
-            result = `You lost :( ! Rock loses to ${capitalize(computerChoice)}`;
+            text = `You lost :( ! Rock loses to ${capitalize(computerChoice)}`;
             isWinner = false;
         }
     }
     // Paper
     if (playerSelection === 'paper') {
         if (computerChoice === 'rock') {
-            result = 'You won! Paper totally beats Rock';
+            text = 'You won! Paper totally beats Rock';
             isWinner = true;
         }
         else {
             isWinner = false;
-            result = `You lost :( ! Paper loses to ${capitalize(computerChoice)}`;
+            text = `You lost :( ! Paper loses to ${capitalize(computerChoice)}`;
         }
     }
     // Scissors
     if (playerSelection === 'scissors') {
         if (computerChoice === 'paper') {
-            result = 'You won! Scissors totally beats Paper';
+            text = 'You won! Scissors totally beats Paper';
             isWinner = true;
         }
         else {
             isWinner = false;
-            result = `You lost :( ! Scissors loses to ${capitalize(computerChoice)}`;
+            text = `You lost :( ! Scissors loses to ${capitalize(computerChoice)}`;
         }
     }
     // Tie
     if (playerSelection === computerChoice) {
-        isWinner = false;
-        result = `You tied! ${capitalize(playerSelection)} vs ${capitalize(computerChoice)} wouldn't work :(`;
+        isTie = true;
+        text = `You tied! ${capitalize(playerSelection)} vs ${capitalize(computerChoice)} wouldn't work :(`;
     }
-    return { result, playerSelection, computerChoice, isWinner };
+    return {
+        results: {
+            text,
+            isWinner,
+            isTie,
+        },
+    };
 }
+// A game of Rock Paper Scissors with 5 rounds
+function game() {
+    let playerWon = 0;
+    let computerWon = 0;
+    let ties = 0;
+    for (let i = 1; i <= 5; i++) {
+        const playerSelection = prompt('Rock, Paper, Scissors');
+        const computerChoice = getComputerChoice();
+        const currentRound = playRound(playerSelection, computerChoice);
+        if (currentRound.results.isWinner) {
+            playerWon++;
+        }
+        else if (!currentRound.results.isTie) {
+            computerWon++;
+        }
+        if (currentRound.results.isTie) {
+            ties++;
+        }
+        console.log(currentRound.results.text);
+    }
+    if (playerWon === computerWon)
+        return console.log(`YOU TIED THE ROUND!! Results: \n\tWins: ${playerWon}\n\tLoses: ${computerWon}\n\tTies:${ties}`);
+    if (playerWon > computerWon) {
+        return console.log(`YOU WON THE ROUND!! Results: \n\tWins: ${playerWon}\n\tLoses: ${computerWon}\n\tTies:${ties}`);
+    }
+    else {
+        return console.log(`YOU LOST THE ROUND!! Results: \n\tWins: ${playerWon}\n\tLoses: ${computerWon}\n\tTies:${ties}`);
+    }
+}
+game();
