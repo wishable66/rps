@@ -1,5 +1,7 @@
 # rps
 
+Live Demo: https://wishable66.github.io/rps/
+
 CREDITS:
 
 Fist by Cristiano Zoucas from <a href="https://thenounproject.com/browse/icons/term/fist/" target="_blank" title="Fist Icons">Noun Project</a>
