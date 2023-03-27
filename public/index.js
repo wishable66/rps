@@ -60,3 +60,47 @@ function playRound(playerSelection, computerChoice) {
     };
 }
 // Selecting button
+const maxRounds = 5;
+const weaponsWrapper = document.querySelectorAll('.weaponsWrapper > *');
+const playAgain = document.querySelector('.playAgain');
+const resultText = document.querySelector('.resultText');
+const playerScore = document.querySelector('.scorePlayer');
+const cpuScore = document.querySelector('.scoreComputer');
+let currentPlayerScore = parseInt(playerScore.textContent.split('--')[1]);
+let currentComputerScore = parseInt(cpuScore.textContent.split('--')[1]);
+function updateScore(winOrLose, isTie) {
+    currentPlayerScore = parseInt(playerScore.textContent.split('--')[1]);
+    currentComputerScore = parseInt(cpuScore.textContent.split('--')[1]);
+    if (winOrLose === true) {
+        playerScore.textContent = `Player -- ${currentPlayerScore + 1}`;
+    }
+    if (winOrLose === false && !isTie) {
+        cpuScore.textContent = `Computer -- ${currentComputerScore + 1}`;
+    }
+    if (parseInt(playerScore.textContent.split('--')[1]) === 5)
+        return (resultText.textContent = 'You won this round');
+    if (parseInt(cpuScore.textContent.split('--')[1]) === 5)
+        return (resultText.textContent = 'You lost this round');
+}
+weaponsWrapper.forEach((weapon) => {
+    weapon.addEventListener('click', (e) => {
+        if (parseInt(playerScore.textContent.split('--')[1]) >= 5 ||
+            parseInt(cpuScore.textContent.split('--')[1]) >= 5)
+            return;
+        const { target } = e;
+        const playerSelection = target.className;
+        const computerChoice = getComputerChoice();
+        const currentRound = playRound(playerSelection, computerChoice).results;
+        console.log({
+            isWinner: currentRound.isWinner,
+            isTie: currentRound.isTie,
+            currentComputerScore,
+            currentPlayerScore,
+        });
+        resultText.textContent = currentRound.text;
+        updateScore(currentRound.isWinner, currentRound.isTie);
+    });
+});
+playAgain.addEventListener('click', (e) => {
+    location.reload();
+});

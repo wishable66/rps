@@ -73,3 +73,55 @@ function playRound(playerSelection: string, computerChoice: string) {
 }
 
 // Selecting button
+
+const maxRounds = 5;
+
+const weaponsWrapper = document.querySelectorAll('.weaponsWrapper > *');
+const playAgain: HTMLButtonElement = document.querySelector('.playAgain');
+const resultText: HTMLParagraphElement = document.querySelector('.resultText');
+const playerScore: HTMLParagraphElement =
+  document.querySelector('.scorePlayer');
+const cpuScore: HTMLParagraphElement = document.querySelector('.scoreComputer');
+
+let currentPlayerScore = parseInt(playerScore.textContent.split('--')[1]);
+let currentComputerScore = parseInt(cpuScore.textContent.split('--')[1]);
+
+function updateScore(winOrLose: boolean, isTie: boolean) {
+  currentPlayerScore = parseInt(playerScore.textContent.split('--')[1]);
+  currentComputerScore = parseInt(cpuScore.textContent.split('--')[1]);
+  if (winOrLose === true) {
+    playerScore.textContent = `Player -- ${currentPlayerScore + 1}`;
+  }
+  if (winOrLose === false && !isTie) {
+    cpuScore.textContent = `Computer -- ${currentComputerScore + 1}`;
+  }
+  if (parseInt(playerScore.textContent.split('--')[1]) === 5)
+    return (resultText.textContent = 'You won this round');
+  if (parseInt(cpuScore.textContent.split('--')[1]) === 5)
+    return (resultText.textContent = 'You lost this round');
+}
+weaponsWrapper.forEach((weapon: HTMLButtonElement) => {
+  weapon.addEventListener('click', (e: PointerEvent) => {
+    if (
+      parseInt(playerScore.textContent.split('--')[1]) >= 5 ||
+      parseInt(cpuScore.textContent.split('--')[1]) >= 5
+    )
+      return;
+    const { target } = e;
+    const playerSelection = (target as HTMLButtonElement).className;
+    const computerChoice = getComputerChoice();
+    const currentRound = playRound(playerSelection, computerChoice).results;
+    console.log({
+      isWinner: currentRound.isWinner,
+      isTie: currentRound.isTie,
+      currentComputerScore,
+      currentPlayerScore,
+    });
+    resultText.textContent = currentRound.text;
+    updateScore(currentRound.isWinner, currentRound.isTie);
+  });
+});
+
+playAgain.addEventListener('click', (e: PointerEvent) => {
+  location.reload();
+});
