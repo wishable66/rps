@@ -48,6 +48,7 @@ header, header > * {
 
 .playAgain {
   border: 3px #7353ba solid;
+  border-radius: 4px;
   width: 250px;
   height: 73px;
   display: flex;

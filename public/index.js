@@ -59,32 +59,4 @@ function playRound(playerSelection, computerChoice) {
         },
     };
 }
-// A game of Rock Paper Scissors with 5 rounds
-function game() {
-    let playerWon = 0;
-    let computerWon = 0;
-    let ties = 0;
-    for (let i = 1; i <= 5; i++) {
-        const playerSelection = prompt('Rock, Paper, Scissors');
-        const computerChoice = getComputerChoice();
-        const currentRound = playRound(playerSelection, computerChoice);
-        if (currentRound.results.isWinner) {
-            playerWon++;
-        }
-        else if (!currentRound.results.isTie) {
-            computerWon++;
-        }
-        if (currentRound.results.isTie) {
-            ties++;
-        }
-        console.log(currentRound.results.text);
-    }
-    if (playerWon === computerWon)
-        return console.log(`YOU TIED THE ROUND!! Results: \n\tWins: ${playerWon}\n\tLoses: ${computerWon}\n\tTies:${ties}`);
-    if (playerWon > computerWon) {
-        return console.log(`YOU WON THE ROUND!! Results: \n\tWins: ${playerWon}\n\tLoses: ${computerWon}\n\tTies:${ties}`);
-    }
-    else {
-        return console.log(`YOU LOST THE ROUND!! Results: \n\tWins: ${playerWon}\n\tLoses: ${computerWon}\n\tTies:${ties}`);
-    }
-}
+// Selecting button
