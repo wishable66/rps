@@ -6,8 +6,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
   <script src="index.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Indie Flower' rel='stylesheet'>
 </head>
 <body>
-  
+  <header>
+    <h1 class="title">
+      <span>
+        ROCK
+      </span>
+      &nbsp;
+      <span>
+        PAPER
+      </span>
+      &nbsp;
+      <span>
+        SCISSORS
+      </span>
+    </h1>
+
+    <h3 class="subTitle">Do you have what it takes, challenger?</h3>
+
+    <h2 class="rules">First to 5 points wins</h2>
+  </header>
+
+  <main>
+    <div class="try"><button class="playAgain"><p>Play Again</p></button></div>
+    <div class="weapons">
+      <div class="weaponsWrapper">
+        <button class="rock"><img src="assets/rock.svg" alt="Rock"></button>
+        <button class="paper"><img src="assets/paper.svg" alt="Paper"></button>
+        <button class="scissors"><img src="assets/scissors.svg" alt="Scissors"></button>
+      </div>
+    </div>
+    <div class="resultText">You won! Scissors totally beats Paper</div>
+    <div class="score">
+      <h1 class="scoreTitle">Score</h1>
+      <div class="wins">
+        <p class="scorePlayer">Player -- 0</p>
+        <p class="scoreComputer">Computer -- 0</p>
+      </div>
+    </div>
+  </main>
+
+  <div class="footer">
+    <p>Copyright &copy; wishable 2023</p>
+  </div>
 </body>
 </html>

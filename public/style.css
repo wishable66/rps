@@ -1,0 +1,151 @@
+/* Overall Styles */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Indie Flower';
+  background-color: #0F1020;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+/* Header */
+
+header, header > * {
+  text-align: center;
+  color: #efc3f5;
+}
+
+.title {
+  font-size: 6rem;
+}
+
+.subTitle {
+  font-size: 3rem;
+}
+
+.rules {
+  font-size: 2rem;
+}
+
+/* playAgain */
+
+.try {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.playAgain {
+  border: 3px #7353ba solid;
+  width: 250px;
+  height: 73px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.playAgain > p {
+  font-size: 2rem;
+  color: #efc3f5;
+  font-family: 'Indie Flower';
+}
+
+.playAgain:active p {
+  border-bottom: 5px solid #efc3f5;
+  border-top: 5px solid #efc3f5;
+  border-radius: 8px;
+}
+
+
+/* Weapons */
+
+.weapons {
+  display: flex;
+  justify-content: center;
+}
+
+.weapons > * > * > img {
+  width: 250px;
+  height: 250px;
+}
+
+.weapons .weaponsWrapper {
+  border: 3px solid #7353ba;
+  border-radius: 50px;
+  margin-top: 30px;
+}
+
+.weaponsWrapper > * {
+  padding: 25px;
+}
+
+.weaponsWrapper > * > *:active {
+  border-bottom: 5px solid #efc3f5;
+  border-top: 5px solid #efc3f5;
+  border-radius: 50px;
+}
+/* Main */
+
+/* Result Text */
+
+.resultText {
+  text-align: center;
+  font-size: 3rem;
+  color: #efc3f5;
+  padding-top: 50px;
+}
+
+
+/* Score */
+.score {
+  margin: 25px;
+  color: #faa6ff;
+  text-align: center;
+}
+
+.wins {
+  display: flex;
+  justify-content: center;
+  gap: 25px
+}
+
+.scoreTitle {
+  font-size: 4rem;
+}
+
+.scorePlayer, .scoreComputer {
+  font-size: 3.5rem;
+}
+
+
+
+/* Footer */
+
+.footer {
+  margin-top: auto;
+  background-color: #2f195f;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer > p {
+  color: #efc3f5;
+  font-size: 1.5rem;
+}
+
+
+

@@ -88,4 +88,3 @@ function game() {
         return console.log(`YOU LOST THE ROUND!! Results: \n\tWins: ${playerWon}\n\tLoses: ${computerWon}\n\tTies:${ties}`);
     }
 }
-game();
